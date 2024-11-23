@@ -30,8 +30,15 @@
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
 					</li>										
-				</ul>				
-				<a class="btn btn-outline-primary me-2" href="login.html" type="submit">Login</a>
+				</ul>
+				
+				@if (!Auth::check())
+				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Login</a>
+					@else
+				<a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Account</a>
+				
+				@endif
+				
 				<a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
 			</div>
 		</div>
@@ -66,7 +73,7 @@
 
 <footer class="bg-dark py-3 bg-2">
 <div class="container">
-    <p class="text-center text-white pt-3 fw-bold fs-6">© 2023 xyz company, all right reserved</p>
+    <p class="text-center text-white pt-3 fw-bold fs-6">© 2024 nilank nikhil company, all right reserved</p>
 </div>
 </footer> 
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>

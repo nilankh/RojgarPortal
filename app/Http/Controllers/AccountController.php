@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -108,5 +109,35 @@ class AccountController extends Controller
     public function logout(){
         Auth::logout();
         return redirect()->route('account.login');
+    }
+
+    public function updateProfileImage(Request $request){
+        // dd($request->all());
+        $id = Auth::user()->id;
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|image'
+        ]);
+
+        if($validator->passes()){
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $imageName = $id.'-'.time().'.'.$ext;
+            $image->move(public_path('/images'), $imageName);
+
+            File::delete(public_path('/images/'.Auth::user()->image));
+
+            User::where('id',$id)->update(['image' => $imageName]);
+            session()->flash('success','Profile picture updated successfully!!');
+            return response()->json([
+                'status' => true,
+                'errors' => []
+            ]);
+
+        }else{
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
     }
 }

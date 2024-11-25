@@ -39,7 +39,7 @@
 				
 				@endif
 				
-				<a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
+				<a class="btn btn-primary" href="{{ route('account.createJob') }}" type="submit">Post a Job</a>
 			</div>
 		</div>
 	</nav>

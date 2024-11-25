@@ -72,7 +72,7 @@
 
                                 <div class="mb-4 col-md-6">
                                     <label for="" class="mb-2">Location<span class="req">*</span></label>
-                                    <input type="text" placeholder="location" id="location" name="Location" class="form-control">
+                                    <input type="text" placeholder="Location" id="location" name="location" class="form-control">
                                     <p></p>
                                 </div>
                             </div>

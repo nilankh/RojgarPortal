@@ -23,6 +23,7 @@ Route::post('/account/save-job', [AccountController::class, 'saveJob'])-> name('
 Route::get('/account/my-jobs', [AccountController::class, 'myJobs'])-> name('account.myJobs');
 Route::get('/account/my-jobs/edit/{jobId}', [AccountController::class, 'editJob'])-> name('account.editJob');
 Route::post('/account/update-job/{jobId}', [AccountController::class, 'updateJob'])-> name('account.updateJob');
+Route::post('/account/delete-job', [AccountController::class, 'deleteJob'])-> name('account.deleteJob');
 
 
 

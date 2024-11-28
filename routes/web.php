@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobsController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -24,6 +25,8 @@ Route::get('/account/my-jobs', [AccountController::class, 'myJobs'])-> name('acc
 Route::get('/account/my-jobs/edit/{jobId}', [AccountController::class, 'editJob'])-> name('account.editJob');
 Route::post('/account/update-job/{jobId}', [AccountController::class, 'updateJob'])-> name('account.updateJob');
 Route::post('/account/delete-job', [AccountController::class, 'deleteJob'])-> name('account.deleteJob');
+
+Route::get('/jobs', [JobsController::class, 'index'])-> name('jobs');
 
 
 
